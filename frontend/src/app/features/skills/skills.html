@@ -1,0 +1,56 @@
+<section class="section">
+
+  <div class="container">
+
+    <span class="eyebrow">
+      Skills
+    </span>
+
+    <h1 class="section-title">
+      My toolkit
+    </h1>
+
+    <p class="section-subtitle">
+      Technologies I use to build full-stack applications.
+    </p>
+
+    <div class="skills-grid">
+
+      @for (skill of skills; track skill.name) {
+
+        <article class="skill-card clay-card">
+
+          <div class="skill-header">
+
+            <h3>
+              {{ skill.name }}
+            </h3>
+
+            <span>
+              {{ skill.level }}%
+            </span>
+
+          </div>
+
+          <p>
+            {{ skill.category }}
+          </p>
+
+          <div class="progress">
+
+            <div
+              class="progress-value"
+              [style.width.%]="skill.level">
+            </div>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>

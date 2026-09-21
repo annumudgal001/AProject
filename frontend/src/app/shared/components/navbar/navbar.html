@@ -1,0 +1,35 @@
+<header class="navbar">
+    <div class="container navbar-inner">
+
+        <a routerLink="/" class="logo">
+            A<span>.</span>
+        </a>
+
+        <nav class="nav-links">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                Home
+            </a>
+
+            <a routerLink="/about" routerLinkActive="active">
+                About
+            </a>
+
+            <a routerLink="/projects" routerLinkActive="active">
+                Projects
+            </a>
+
+            <a routerLink="/skills" routerLinkActive="active">
+                Skills
+            </a>
+
+            <a routerLink="/contact" routerLinkActive="active">
+                Contact
+            </a>
+        </nav>
+
+        <a routerLink="/contact" class="nav-button">
+            Let's Talk
+        </a>
+
+    </div>
+</header>

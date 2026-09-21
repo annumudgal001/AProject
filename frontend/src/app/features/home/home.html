@@ -1,0 +1,120 @@
+<section class="hero section">
+
+  <div class="container hero-grid">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        Available for opportunities
+      </span>
+
+      <h1>
+        Building digital
+        <span>experiences</span>
+        that feel simple.
+      </h1>
+
+      <p class="hero-description">
+        {{ portfolio.tagline }}
+        I work across the frontend and backend to build
+        complete web applications.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          routerLink="/projects"
+          class="primary-button">
+          View Projects
+        </a>
+
+        <a
+          routerLink="/contact"
+          class="secondary-button">
+          Contact Me
+        </a>
+
+      </div>
+
+      <div class="hero-tech">
+
+        <span>Angular</span>
+        <span>Node.js</span>
+        <span>Express</span>
+        <span>MongoDB</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card clay-card">
+
+      <div class="status-dot"></div>
+
+      <p class="card-label">
+        CURRENTLY BUILDING
+      </p>
+
+      <h2>
+        {{ portfolio.name }}'s
+        Portfolio
+      </h2>
+
+      <p>
+        A full-stack portfolio built with the MEAN stack.
+      </p>
+
+      <div class="stack">
+
+        <div>Angular</div>
+        <div>Node</div>
+        <div>Express</div>
+        <div>MongoDB</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <span class="eyebrow">
+        Selected work
+      </span>
+
+      <h2 class="section-title">
+        Things I've built
+      </h2>
+
+      <p class="section-subtitle">
+        A collection of projects where I experiment,
+        learn and solve practical problems.
+      </p>
+
+    </div>
+
+
+    <div class="project-grid">
+
+      @for (project of portfolio.projects; track project.id) {
+
+        <app-project-card
+          [project]="project">
+        </app-project-card>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>
