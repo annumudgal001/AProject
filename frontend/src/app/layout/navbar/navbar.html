@@ -1,0 +1,67 @@
+<header class="navbar" role="banner">
+  <div class="navbar-inner container">
+    <a routerLink="/" class="brand" (click)="closeMobile()" aria-label="Home">
+      <span class="brand-mark">A</span>
+      <span class="brand-name">{{ profile().name.split(' ')[0] }}</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main">
+      @for (item of navItems(); track item.route) {
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+          class="nav-link"
+        >
+          {{ item.name }}
+        </a>
+      }
+    </nav>
+
+    <div class="actions">
+      <button
+        type="button"
+        class="theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="theme() === 'light' ? 'Switch to dark mode' : 'Switch to light mode'"
+      >
+        @if (theme() === 'light') {
+          <span aria-hidden="true">☾</span>
+        } @else {
+          <span aria-hidden="true">☀</span>
+        }
+      </button>
+
+      <button
+        type="button"
+        class="menu-toggle"
+        (click)="toggleMobile()"
+        [attr.aria-expanded]="mobileOpen()"
+        aria-controls="mobile-menu"
+        aria-label="Toggle menu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  @if (mobileOpen()) {
+    <div id="mobile-menu" class="mobile-nav" role="dialog" aria-modal="true">
+      <nav aria-label="Mobile">
+        @for (item of navItems(); track item.route) {
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+            class="mobile-link"
+            (click)="closeMobile()"
+          >
+            {{ item.name }}
+          </a>
+        }
+      </nav>
+    </div>
+  }
+</header>

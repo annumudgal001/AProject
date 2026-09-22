@@ -1,0 +1,29 @@
+.lead { margin-bottom: 2rem; }
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+.head {
+  display: flex;
+  gap: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.quote {
+  margin: 0.75rem 0 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

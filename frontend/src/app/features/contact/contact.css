@@ -1,0 +1,13 @@
+.lead {
+  margin-bottom: 2rem;
+}
+.form {
+  display: grid;
+  gap: 1.15rem;
+  max-width: 32rem;
+}
+.success-card {
+  max-width: 28rem;
+  text-align: center;
+  padding: 2.5rem 1.5rem !important;
+}

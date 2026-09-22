@@ -1,56 +1,56 @@
-<section class="section">
-
+<section class="page skills route-enter">
   <div class="container">
+    <h1 class="section-title">Skills</h1>
+    <p class="lead muted">Technologies and strengths I work with daily.</p>
 
-    <span class="eyebrow">
-      Skills
-    </span>
-
-    <h1 class="section-title">
-      My toolkit
-    </h1>
-
-    <p class="section-subtitle">
-      Technologies I use to build full-stack applications.
-    </p>
-
-    <div class="skills-grid">
-
-      @for (skill of skills; track skill.name) {
-
-        <article class="skill-card clay-card">
-
-          <div class="skill-header">
-
-            <h3>
-              {{ skill.name }}
-            </h3>
-
-            <span>
-              {{ skill.level }}%
-            </span>
-
-          </div>
-
-          <p>
-            {{ skill.category }}
-          </p>
-
-          <div class="progress">
-
-            <div
-              class="progress-value"
-              [style.width.%]="skill.level">
+    <div class="categories">
+      <app-clay-card>
+        <h2>Frontend</h2>
+        <div class="list">
+          @for (s of skills().frontend; track s.name) {
+            <div class="item">
+              <strong>{{ s.name }}</strong>
+              <p class="muted">{{ s.description }}</p>
             </div>
+          }
+        </div>
+      </app-clay-card>
 
-          </div>
+      <app-clay-card>
+        <h2>Backend</h2>
+        <div class="list">
+          @for (s of skills().backend; track s.name) {
+            <div class="item">
+              <strong>{{ s.name }}</strong>
+              <p class="muted">{{ s.description }}</p>
+            </div>
+          }
+        </div>
+      </app-clay-card>
 
-        </article>
+      <app-clay-card>
+        <h2>Languages & Tools</h2>
+        <div class="tags">
+          @for (lang of skills().programmingLanguages; track lang) {
+            <app-clay-badge>{{ lang }}</app-clay-badge>
+          }
+          @for (t of skills().tools; track t) {
+            <app-clay-badge variant="muted">{{ t }}</app-clay-badge>
+          }
+        </div>
+      </app-clay-card>
 
-      }
-
+      <app-clay-card>
+        <h2>Core strengths</h2>
+        <div class="list">
+          @for (s of skills().coreSkills; track s.name) {
+            <div class="item">
+              <strong>{{ s.name }}</strong>
+              <p class="muted">{{ s.description }}</p>
+            </div>
+          }
+        </div>
+      </app-clay-card>
     </div>
-
   </div>
-
 </section>

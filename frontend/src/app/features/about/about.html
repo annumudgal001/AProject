@@ -1,52 +1,64 @@
-<section class="section">
-
+<section class="page about route-enter">
   <div class="container">
+    <h1 class="section-title">About</h1>
+    <p class="lead">{{ profile().introduction }}</p>
 
-    <span class="eyebrow">
-      About me
-    </span>
-
-    <h1 class="section-title">
-      A developer who likes
-      building things.
-    </h1>
-
-    <div class="about-grid">
-
-      <div class="about-text clay-card">
-
+    <div class="grid">
+      <app-clay-card>
+        <h2>Background</h2>
         <p>
-          {{ portfolio.bio }}
+          I’m a {{ profile().currentTitle }} focused on building clean, scalable web applications.
+          My journey spans frontend craftsmanship, full-stack development, and applied AI/ML.
         </p>
+        <p>{{ philosophy().learning }}</p>
+      </app-clay-card>
 
-        <p>
-          My current focus is full-stack development
-          using Angular, Node.js, Express and MongoDB.
-        </p>
-
-      </div>
-
-      <div class="about-facts clay-card">
-
-        <div>
-          <span>Role</span>
-          <strong>{{ portfolio.role }}</strong>
-        </div>
-
-        <div>
-          <span>Stack</span>
-          <strong>MEAN</strong>
-        </div>
-
-        <div>
-          <span>Focus</span>
-          <strong>Full Stack Development</strong>
-        </div>
-
-      </div>
-
+      <app-clay-card>
+        <h2>Philosophy</h2>
+        <p>{{ philosophy().building }}</p>
+        <blockquote>{{ philosophy().developerQuote }}</blockquote>
+      </app-clay-card>
     </div>
 
-  </div>
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      @for (exp of experience(); track exp.company + exp.duration) {
+        <app-clay-card>
+          <div class="entry-header">
+            <img [src]="exp.logo" [alt]="exp.company" class="logo" width="40" height="40" />
+            <div>
+              <h3>{{ exp.position }}</h3>
+              <p class="muted">{{ exp.company }} · {{ exp.location }}</p>
+              <app-clay-badge variant="muted">{{ exp.duration }}</app-clay-badge>
+            </div>
+          </div>
+          <p>{{ exp.description }}</p>
+        </app-clay-card>
+      }
+    </div>
 
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      @for (edu of education(); track edu.institution + edu.degree) {
+        <app-clay-card>
+          <div class="entry-header">
+            <img [src]="edu.logo" [alt]="edu.institution" class="logo" width="40" height="40" />
+            <div>
+              <h3>{{ edu.degree }}</h3>
+              <p class="muted">{{ edu.institution }} · {{ edu.location }}</p>
+              <app-clay-badge variant="muted">{{ edu.duration }}</app-clay-badge>
+            </div>
+          </div>
+          <p>{{ edu.description }}</p>
+          @if (edu.coursework.length) {
+            <div class="tags">
+              @for (c of edu.coursework; track c) {
+                <app-clay-badge>{{ c }}</app-clay-badge>
+              }
+            </div>
+          }
+        </app-clay-card>
+      }
+    </div>
+  </div>
 </section>

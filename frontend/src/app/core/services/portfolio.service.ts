@@ -1,120 +1,72 @@
-import { Injectable } from '@angular/core';
-import { Portfolio } from '../models/portfolio.model';
+import { Injectable, signal, computed } from '@angular/core';
+import {
+  PROFILE,
+  NAV_ITEMS,
+  EXPERIENCE,
+  EDUCATION,
+  SKILLS,
+  SERVICES,
+  PROJECTS,
+  CERTIFICATIONS,
+  REVIEWS,
+  JOURNEY,
+  THOUGHTS,
+  PHILOSOPHY,
+  PORTFOLIO_META,
+} from '../data/portfolio.data';
+import {
+  Profile,
+  Experience,
+  Education,
+  Skills,
+  ServiceItem,
+  Project,
+  Certification,
+  Review,
+  JourneyEntry,
+  Thought,
+  Philosophy,
+  PortfolioMeta,
+  NavItem,
+} from '../models/portfolio.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class PortfolioService {
+  // Signals hold the static data. Later these become HTTP-driven.
+  private readonly profileSignal = signal<Profile>(PROFILE);
+  private readonly navSignal = signal<NavItem[]>(NAV_ITEMS);
+  private readonly experienceSignal = signal<Experience[]>(EXPERIENCE);
+  private readonly educationSignal = signal<Education[]>(EDUCATION);
+  private readonly skillsSignal = signal<Skills>(SKILLS);
+  private readonly servicesSignal = signal<ServiceItem[]>(SERVICES);
+  private readonly projectsSignal = signal<Project[]>(PROJECTS);
+  private readonly certificationsSignal = signal<Certification[]>(CERTIFICATIONS);
+  private readonly reviewsSignal = signal<Review[]>(REVIEWS);
+  private readonly journeySignal = signal<JourneyEntry[]>(JOURNEY);
+  private readonly thoughtsSignal = signal<Thought[]>(THOUGHTS);
+  private readonly philosophySignal = signal<Philosophy>(PHILOSOPHY);
+  private readonly metaSignal = signal<PortfolioMeta>(PORTFOLIO_META);
 
-  private portfolio: Portfolio = {
-    name: 'Annu',
-    role: 'MEAN Stack Developer',
-    tagline: 'Building modern full-stack web applications.',
-    bio: `I am a developer interested in building practical,
-           scalable and user-friendly web applications.`,
+  // Public read-only views
+  readonly profile = this.profileSignal.asReadonly();
+  readonly navItems = this.navSignal.asReadonly();
+  readonly experience = this.experienceSignal.asReadonly();
+  readonly education = this.educationSignal.asReadonly();
+  readonly skills = this.skillsSignal.asReadonly();
+  readonly services = this.servicesSignal.asReadonly();
+  readonly projects = this.projectsSignal.asReadonly();
+  readonly certifications = this.certificationsSignal.asReadonly();
+  readonly reviews = this.reviewsSignal.asReadonly();
+  readonly journey = this.journeySignal.asReadonly();
+  readonly thoughts = this.thoughtsSignal.asReadonly();
+  readonly philosophy = this.philosophySignal.asReadonly();
+  readonly meta = this.metaSignal.asReadonly();
 
-    email: 'your-email@example.com',
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
+  readonly featuredProjects = computed(() => this.projects().slice(0, 3));
 
-    skills: [
-      {
-        name: 'Angular',
-        category: 'Frontend',
-        level: 80
-      },
-      {
-        name: 'TypeScript',
-        category: 'Frontend',
-        level: 75
-      },
-      {
-        name: 'Node.js',
-        category: 'Backend',
-        level: 75
-      },
-      {
-        name: 'Express.js',
-        category: 'Backend',
-        level: 75
-      },
-      {
-        name: 'MongoDB',
-        category: 'Database',
-        level: 70
-      }
-    ],
-
-    projects: [
-      {
-        id: 'portfolio',
-        title: 'Personal Portfolio',
-        description:
-          'A full-stack personal portfolio built using the MEAN stack.',
-        technologies: [
-          'Angular',
-          'Node.js',
-          'Express',
-          'MongoDB'
-        ],
-        githubUrl: '#',
-        liveUrl: '#',
-        status: 'in-progress'
-      },
-
-      {
-        id: 'project-2',
-        title: 'Project Two',
-        description:
-          'A full-stack application demonstrating CRUD and API integration.',
-        technologies: [
-          'Angular',
-          'Express',
-          'MongoDB'
-        ],
-        githubUrl: '#',
-        status: 'completed'
-      }
-    ],
-
-    services: [
-      {
-        title: 'Web Development',
-        description:
-          'Building responsive and modern web applications.',
-        icon: '💻'
-      },
-      {
-        title: 'Frontend Development',
-        description:
-          'Creating interactive interfaces using Angular.',
-        icon: '🎨'
-      },
-      {
-        title: 'Backend Development',
-        description:
-          'Developing REST APIs using Node.js and Express.',
-        icon: '⚙️'
-      }
-    ],
-
-    journey: [
-      {
-        year: '2025',
-        title: 'Started Web Development',
-        description:
-          'Started learning modern web development technologies.'
-      },
-      {
-        year: '2026',
-        title: 'MEAN Stack',
-        description:
-          'Started building full-stack applications using Angular, Node.js, Express and MongoDB.'
-      }
-    ]
-  };
-
-  getPortfolio(): Portfolio {
-    return this.portfolio;
+  getProjectById(id: string): Project | undefined {
+    return this.projects().find((p) => p.id === id);
   }
+
+  // Future: replace signal setters with HTTP + toSignal / switchMap
 }

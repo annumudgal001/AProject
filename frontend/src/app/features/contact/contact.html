@@ -1,1 +1,61 @@
-<p>contact works!</p>
+<section class="page contact route-enter">
+  <div class="container">
+    <h1 class="section-title">Contact</h1>
+    <p class="lead muted">
+      Prefer email?
+      <a [href]="'mailto:' + profile().email">{{ profile().email }}</a>
+    </p>
+
+    @if (submitted()) {
+      <app-clay-card class="success-card">
+        <h2>Message received (local)</h2>
+        <p class="muted">
+          This is Phase 1 – the form is not yet connected to the backend.
+          Your data stayed in the browser.
+        </p>
+        <app-clay-button variant="primary" (clicked)="resetForm()">Send another</app-clay-button>
+      </app-clay-card>
+    } @else {
+      <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <app-clay-input
+          label="Name"
+          formControlName="name"
+          [required]="true"
+          [error]="nameError"
+          autocomplete="name"
+        />
+        <app-clay-input
+          label="Email"
+          type="email"
+          formControlName="email"
+          [required]="true"
+          [error]="emailError"
+          autocomplete="email"
+        />
+        <app-clay-input
+          label="Subject"
+          formControlName="subject"
+          [required]="true"
+          [error]="subjectError"
+        />
+        <app-clay-textarea
+          label="Message"
+          formControlName="message"
+          [required]="true"
+          [error]="messageError"
+          [rows]="6"
+        />
+
+        <app-clay-button
+          type="submit"
+          variant="primary"
+          size="lg"
+          [disabled]="form.invalid || submitting()"
+          [fullWidth]="true"
+        >
+          {{ submitting() ? 'Sending…' : 'Send message' }}
+        </app-clay-button>
+      </form>
+    }
+  </div>
+</section>

@@ -1,0 +1,48 @@
+.dock {
+  display: none;
+  position: fixed;
+  bottom: calc(0.75rem + var(--safe-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 95;
+  padding: 0.4rem;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--clay-raised);
+  border: 1px solid var(--border);
+}
+
+.dock-inner {
+  display: flex;
+  gap: 0.15rem;
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  min-width: 3.4rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: var(--radius-md);
+  color: var(--ink-soft);
+  font-size: 0.65rem;
+  font-weight: 550;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+.dock-item .icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.dock-item.active,
+.dock-item:hover {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+@media (max-width: 899px) {
+  .dock {
+    display: block;
+  }
+}

@@ -1,0 +1,16 @@
+.lead { margin-bottom: 2rem; }
+.list {
+  display: grid;
+  gap: 1.15rem;
+  max-width: 42rem;
+}
+.meta {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}

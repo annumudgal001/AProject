@@ -1,1 +1,19 @@
-<p>services works!</p>
+<section class="page services route-enter">
+  <div class="container">
+    <h1 class="section-title">Services</h1>
+    <p class="lead muted">What I can help you build.</p>
+
+    <div class="grid">
+      @for (s of services(); track s.name) {
+        <app-clay-card [interactive]="true">
+          <h2>{{ s.name }}</h2>
+          <p>{{ s.description }}</p>
+        </app-clay-card>
+      }
+    </div>
+
+    <div class="cta">
+      <app-clay-button route="/contact" variant="primary" size="lg">Start a conversation</app-clay-button>
+    </div>
+  </div>
+</section>

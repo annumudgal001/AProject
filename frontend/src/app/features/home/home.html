@@ -1,120 +1,63 @@
-<section class="hero section">
-
-  <div class="container hero-grid">
-
-    <div class="hero-content">
-
-      <span class="eyebrow">
-        Available for opportunities
-      </span>
-
-      <h1>
-        Building digital
-        <span>experiences</span>
-        that feel simple.
-      </h1>
-
-      <p class="hero-description">
-        {{ portfolio.tagline }}
-        I work across the frontend and backend to build
-        complete web applications.
-      </p>
-
-      <div class="hero-actions">
-
-        <a
-          routerLink="/projects"
-          class="primary-button">
-          View Projects
-        </a>
-
-        <a
-          routerLink="/contact"
-          class="secondary-button">
-          Contact Me
-        </a>
-
-      </div>
-
-      <div class="hero-tech">
-
-        <span>Angular</span>
-        <span>Node.js</span>
-        <span>Express</span>
-        <span>MongoDB</span>
-
-      </div>
-
-    </div>
-
-
-    <div class="hero-card clay-card">
-
-      <div class="status-dot"></div>
-
-      <p class="card-label">
-        CURRENTLY BUILDING
-      </p>
-
-      <h2>
-        {{ portfolio.name }}'s
-        Portfolio
-      </h2>
-
-      <p>
-        A full-stack portfolio built with the MEAN stack.
-      </p>
-
-      <div class="stack">
-
-        <div>Angular</div>
-        <div>Node</div>
-        <div>Express</div>
-        <div>MongoDB</div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section">
-
+<section class="page home route-enter">
   <div class="container">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="eyebrow muted">Hello, I’m</p>
+        <h1>{{ profile().name }}</h1>
+        <p class="headline">{{ profile().headline }}</p>
+        <p class="intro">{{ profile().introduction }}</p>
 
-    <div class="section-heading">
+        <div class="cta-row">
+          <app-clay-button route="/projects" variant="primary" size="lg">View Projects</app-clay-button>
+          <app-clay-button route="/contact" variant="secondary" size="lg">Get in touch</app-clay-button>
+        </div>
 
-      <span class="eyebrow">
-        Selected work
-      </span>
+        <div class="meta-row">
+          <app-clay-badge>{{ profile().currentTitle }}</app-clay-badge>
+          <a [href]="profile().resume" target="_blank" rel="noopener noreferrer" class="resume-link">
+            Download Resume →
+          </a>
+        </div>
+      </div>
 
-      <h2 class="section-title">
-        Things I've built
-      </h2>
-
-      <p class="section-subtitle">
-        A collection of projects where I experiment,
-        learn and solve practical problems.
-      </p>
-
+      <div class="hero-visual">
+        <app-clay-card class="portrait-card" [elevated]="true">
+          <img
+            [src]="profile().profileImage"
+            [alt]="profile().name"
+            width="280"
+            height="280"
+            loading="eager"
+          />
+        </app-clay-card>
+      </div>
     </div>
 
+    <section class="featured" aria-labelledby="featured-heading">
+      <h2 id="featured-heading" class="section-title">Selected work</h2>
+      <div class="project-grid">
+        @for (project of featured(); track project.id) {
+          <a [routerLink]="['/projects', project.id]" class="project-link">
+            <app-clay-card [interactive]="true">
+              <img [src]="project.image" [alt]="project.name" loading="lazy" class="project-img" />
+              <h3>{{ project.name }}</h3>
+              <p class="muted">{{ project.description }}</p>
+              <div class="tech">
+                @for (t of project.technologies.slice(0, 4); track t) {
+                  <app-clay-badge variant="muted">{{ t }}</app-clay-badge>
+                }
+              </div>
+            </app-clay-card>
+          </a>
+        }
+      </div>
+      <div class="see-all">
+        <app-clay-button route="/projects" variant="ghost">See all projects →</app-clay-button>
+      </div>
+    </section>
 
-    <div class="project-grid">
-
-      @for (project of portfolio.projects; track project.id) {
-
-        <app-project-card
-          [project]="project">
-        </app-project-card>
-
-      }
-
-    </div>
-
+    <blockquote class="quote">
+      <p>{{ philosophy().developerQuote }}</p>
+    </blockquote>
   </div>
-
 </section>

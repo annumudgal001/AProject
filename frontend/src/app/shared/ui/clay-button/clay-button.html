@@ -1,0 +1,43 @@
+@if (route(); as link) {
+  <a
+    [routerLink]="link"
+    class="clay-btn"
+    [class.primary]="variant() === 'primary'"
+    [class.secondary]="variant() === 'secondary'"
+    [class.ghost]="variant() === 'ghost'"
+    [class.sm]="size() === 'sm'"
+    [class.lg]="size() === 'lg'"
+    [class.full]="fullWidth()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.target]="target()"
+    [attr.rel]="rel()"
+  ><ng-content /></a>
+} @else if (href(); as url) {
+  <a
+    [href]="url"
+    class="clay-btn"
+    [class.primary]="variant() === 'primary'"
+    [class.secondary]="variant() === 'secondary'"
+    [class.ghost]="variant() === 'ghost'"
+    [class.sm]="size() === 'sm'"
+    [class.lg]="size() === 'lg'"
+    [class.full]="fullWidth()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.target]="target()"
+    [attr.rel]="rel()"
+  ><ng-content /></a>
+} @else {
+  <button
+    [type]="type()"
+    class="clay-btn"
+    [class.primary]="variant() === 'primary'"
+    [class.secondary]="variant() === 'secondary'"
+    [class.ghost]="variant() === 'ghost'"
+    [class.sm]="size() === 'sm'"
+    [class.lg]="size() === 'lg'"
+    [class.full]="fullWidth()"
+    [disabled]="disabled()"
+    [attr.aria-label]="ariaLabel()"
+    (click)="onClick($event)"
+  ><ng-content /></button>
+}

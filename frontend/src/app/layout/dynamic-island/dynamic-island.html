@@ -1,0 +1,21 @@
+<div
+  class="island"
+  [class.expanded]="expanded()"
+  role="status"
+  aria-live="polite"
+  (click)="toggle()"
+  (keydown.enter)="toggle()"
+  tabindex="0"
+>
+  <div class="pill">
+    <span class="dot" aria-hidden="true"></span>
+    <span class="label">Available for opportunities</span>
+  </div>
+
+  @if (expanded()) {
+    <div class="details">
+      <p class="role">{{ profile().currentTitle }}</p>
+      <p class="muted">Open to full-time · freelance · collaboration</p>
+    </div>
+  }
+</div>

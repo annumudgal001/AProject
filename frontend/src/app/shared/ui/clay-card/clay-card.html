@@ -1,0 +1,9 @@
+<article
+  class="clay-card"
+  [class.elevated]="elevated()"
+  [class.interactive]="interactive()"
+  [class.pad-sm]="padding() === 'sm'"
+  [class.pad-lg]="padding() === 'lg'"
+>
+  <ng-content />
+</article>

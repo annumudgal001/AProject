@@ -1,1 +1,22 @@
-<p>journey works!</p>
+<section class="page journey route-enter">
+  <div class="container">
+    <h1 class="section-title">Journey</h1>
+    <p class="lead muted">Milestones in learning, work, and growth.</p>
+
+    <div class="timeline">
+      @for (entry of journey(); track entry.id) {
+        <div class="timeline-item">
+          <div class="marker" aria-hidden="true"></div>
+          <app-clay-card>
+            <div class="head">
+              <h2>{{ entry.title }}</h2>
+              <app-clay-badge variant="muted">{{ entry.period }}</app-clay-badge>
+            </div>
+            <p class="subtitle muted">{{ entry.subtitle }} @if (entry.location) { · {{ entry.location }} }</p>
+            <p>{{ entry.description }}</p>
+          </app-clay-card>
+        </div>
+      }
+    </div>
+  </div>
+</section>

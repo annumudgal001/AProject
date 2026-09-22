@@ -1,1 +1,24 @@
-<p>thoughts works!</p>
+<section class="page thoughts route-enter">
+  <div class="container">
+    <h1 class="section-title">Thoughts</h1>
+    <p class="lead muted">Notes on building, learning, and craft.</p>
+
+    <div class="list">
+      @for (t of thoughts(); track t.id) {
+        <app-clay-card [interactive]="true">
+          <div class="meta">
+            <time class="muted">{{ t.date }}</time>
+            <span class="muted">· {{ t.readTime }}</span>
+          </div>
+          <h2>{{ t.title }}</h2>
+          <p>{{ t.excerpt }}</p>
+          <div class="tags">
+            @for (tag of t.tags; track tag) {
+              <app-clay-badge variant="muted">{{ tag }}</app-clay-badge>
+            }
+          </div>
+        </app-clay-card>
+      }
+    </div>
+  </div>
+</section>

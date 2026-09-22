@@ -1,1 +1,27 @@
-<p>reviews works!</p>
+<section class="page reviews route-enter">
+  <div class="container">
+    <h1 class="section-title">Reviews</h1>
+    <p class="lead muted">What colleagues and mentors have said.</p>
+
+    <div class="grid">
+      @for (r of reviews(); track r.id) {
+        <app-clay-card>
+          <div class="head">
+            <img [src]="r.avatar" [alt]="r.name" class="avatar" width="48" height="48" />
+            <div>
+              <strong>{{ r.name }}</strong>
+              <p class="muted">
+                {{ r.role }}
+                @if (r.organization) {
+                  · {{ r.organization }}
+                }
+              </p>
+            </div>
+          </div>
+          <app-rating [value]="r.rating" />
+          <p class="quote">“{{ r.testimonial }}”</p>
+        </app-clay-card>
+      }
+    </div>
+  </div>
+</section>

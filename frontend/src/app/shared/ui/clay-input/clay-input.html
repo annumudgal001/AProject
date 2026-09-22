@@ -1,0 +1,20 @@
+<div class="field" [class.has-error]="!!error()">
+  @if (label()) {
+    <label [for]="id()">{{ label() }} @if (required()) { <span class="req">*</span> }</label>
+  }
+  <input
+    [id]="id()"
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [value]="value"
+    [disabled]="disabled"
+    [attr.autocomplete]="autocomplete()"
+    [attr.aria-invalid]="!!error()"
+    [attr.aria-describedby]="error() ? id() + '-error' : null"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+  />
+  @if (error()) {
+    <p class="error" [id]="id() + '-error'" role="alert">{{ error() }}</p>
+  }
+</div>

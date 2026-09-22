@@ -1,1 +1,28 @@
-<p>project-list works!</p>
+<section class="page projects route-enter">
+  <div class="container">
+    <h1 class="section-title">Projects</h1>
+    <p class="lead muted">A selection of work spanning full-stack, frontend, and experimental tools.</p>
+
+    <div class="grid">
+      @for (project of projects(); track project.id) {
+        <a [routerLink]="['/projects', project.id]" class="card-link">
+          <app-clay-card [interactive]="true">
+            <img [src]="project.image" [alt]="project.name" class="thumb" loading="lazy" />
+            <h2>{{ project.name }}</h2>
+            <p class="desc">{{ project.description }}</p>
+            <div class="tech">
+              @for (t of project.technologies; track t) {
+                <app-clay-badge variant="muted">{{ t }}</app-clay-badge>
+              }
+            </div>
+            <div class="links">
+              @if (project.liveDemo) {
+                <span class="live">Live demo available</span>
+              }
+            </div>
+          </app-clay-card>
+        </a>
+      }
+    </div>
+  </div>
+</section>

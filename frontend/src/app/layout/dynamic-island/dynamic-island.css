@@ -1,0 +1,58 @@
+.island {
+  position: fixed;
+  top: calc(0.75rem + var(--safe-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  max-width: min(320px, calc(100vw - 2rem));
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--clay-raised);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-radius var(--duration) var(--ease), padding var(--duration) var(--ease);
+  user-select: none;
+}
+
+.island.expanded {
+  border-radius: var(--radius-lg);
+  padding-bottom: 0.75rem;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 550;
+  color: var(--ink);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 30%, transparent);
+}
+
+.details {
+  padding: 0 0.9rem 0.25rem;
+  font-size: 0.8rem;
+}
+.role {
+  margin: 0 0 0.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.muted {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 480px) {
+  .island {
+    display: none; /* avoid clash with mobile header on very small screens */
+  }
+}

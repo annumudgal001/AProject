@@ -1,0 +1,20 @@
+.lead { margin-bottom: 2rem; }
+.grid {
+  display: grid;
+  gap: 1.15rem;
+  grid-template-columns: 1fr;
+}
+.cta {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

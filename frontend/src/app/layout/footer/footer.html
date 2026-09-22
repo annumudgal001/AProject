@@ -1,0 +1,23 @@
+<footer class="footer" role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="name">{{ profile().name }}</p>
+      <p class="tagline muted">{{ profile().headline }}</p>
+    </div>
+
+    <div class="footer-links">
+      <a routerLink="/">Home</a>
+      <a routerLink="/projects">Projects</a>
+      <a routerLink="/contact">Contact</a>
+      <a [href]="profile().resume" target="_blank" rel="noopener noreferrer">Resume</a>
+    </div>
+
+    <div class="social">
+      <a [href]="social.github" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+      <a [href]="social.linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+      <a [href]="social.twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
+    </div>
+
+    <p class="copyright muted">{{ meta().copyright }}</p>
+  </div>
+</footer>

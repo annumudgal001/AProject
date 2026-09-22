@@ -1,0 +1,25 @@
+.clay-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.35rem;
+  transition:
+    box-shadow var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.clay-card.elevated {
+  box-shadow: var(--clay-raised);
+}
+
+.clay-card.interactive:hover {
+  box-shadow: var(--clay-hover);
+  transform: translateY(-2px);
+}
+
+.clay-card.pad-sm {
+  padding: 0.85rem 1rem;
+}
+.clay-card.pad-lg {
+  padding: 1.6rem 1.75rem;
+}

@@ -1,0 +1,43 @@
+.lead {
+  max-width: 48ch;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.timeline {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.entry-header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.logo {
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--surface-raised);
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+blockquote {
+  margin: 0.75rem 0 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

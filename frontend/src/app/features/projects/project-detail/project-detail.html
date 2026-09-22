@@ -1,1 +1,82 @@
-<p>project-detail works!</p>
+<section class="page detail route-enter">
+  <div class="container">
+    @if (project(); as p) {
+      <app-clay-button route="/projects" variant="ghost" size="sm" class="back">← Back to projects</app-clay-button>
+
+      <header class="header">
+        <h1>{{ p.name }}</h1>
+        <p class="muted">{{ p.description }}</p>
+        <div class="tech">
+          @for (t of p.technologies; track t) {
+            <app-clay-badge>{{ t }}</app-clay-badge>
+          }
+        </div>
+        <div class="actions">
+          @if (p.liveDemo) {
+            <app-clay-button [href]="p.liveDemo" target="_blank" rel="noopener noreferrer" variant="primary">Live Demo</app-clay-button>
+          }
+          <app-clay-button [href]="p.sourceCode" target="_blank" rel="noopener noreferrer" variant="secondary">Source Code</app-clay-button>
+        </div>
+      </header>
+
+      <img [src]="p.image" [alt]="p.name" class="hero-img" />
+
+      <div class="content-grid">
+        @if (p.problem) {
+          <app-clay-card>
+            <h2>Problem</h2>
+            <p>{{ p.problem }}</p>
+          </app-clay-card>
+        }
+        @if (p.solution) {
+          <app-clay-card>
+            <h2>Solution</h2>
+            <p>{{ p.solution }}</p>
+          </app-clay-card>
+        }
+        @if (p.architecture) {
+          <app-clay-card>
+            <h2>Architecture</h2>
+            <p>{{ p.architecture }}</p>
+          </app-clay-card>
+        }
+        @if (p.features?.length) {
+          <app-clay-card>
+            <h2>Features</h2>
+            <ul>
+              @for (f of p.features; track f) {
+                <li>{{ f }}</li>
+              }
+            </ul>
+          </app-clay-card>
+        }
+        @if (p.challenges?.length) {
+          <app-clay-card>
+            <h2>Challenges</h2>
+            <ul>
+              @for (c of p.challenges; track c) {
+                <li>{{ c }}</li>
+              }
+            </ul>
+          </app-clay-card>
+        }
+        @if (p.lessons?.length) {
+          <app-clay-card>
+            <h2>Lessons</h2>
+            <ul>
+              @for (l of p.lessons; track l) {
+                <li>{{ l }}</li>
+              }
+            </ul>
+          </app-clay-card>
+        }
+      </div>
+    } @else {
+      <app-clay-card class="not-found-card">
+        <h1>Project not found</h1>
+        <p class="muted">The project you’re looking for doesn’t exist or has been moved.</p>
+        <app-clay-button route="/projects" variant="primary">Back to projects</app-clay-button>
+      </app-clay-card>
+    }
+  </div>
+</section>

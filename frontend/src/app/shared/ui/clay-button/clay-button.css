@@ -1,0 +1,69 @@
+.clay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-weight: 560;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  padding: 0.7rem 1.35rem;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--clay-raised);
+  transition:
+    box-shadow var(--duration) var(--ease),
+    transform var(--duration) var(--ease),
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.clay-btn:hover:not(:disabled) {
+  box-shadow: var(--clay-hover);
+  transform: translateY(-1px);
+}
+
+.clay-btn:active:not(:disabled) {
+  box-shadow: var(--clay-pressed);
+  transform: translateY(0);
+}
+
+.clay-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.clay-btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.clay-btn.secondary {
+  background: var(--surface-raised);
+}
+
+.clay-btn.ghost {
+  box-shadow: none;
+  background: transparent;
+  color: var(--ink-soft);
+}
+.clay-btn.ghost:hover:not(:disabled) {
+  background: var(--accent-soft);
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.clay-btn.sm {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+}
+.clay-btn.lg {
+  padding: 0.9rem 1.6rem;
+  font-size: 1.05rem;
+}
+.clay-btn.full {
+  width: 100%;
+}

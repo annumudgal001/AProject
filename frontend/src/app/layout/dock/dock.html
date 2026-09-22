@@ -1,0 +1,25 @@
+<nav class="dock" aria-label="Quick navigation">
+  <div class="dock-inner">
+    @for (item of items().slice(0, 5); track item.route) {
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+        class="dock-item"
+        [attr.aria-label]="item.name"
+      >
+        <span class="icon" aria-hidden="true">
+          @switch (item.route) {
+            @case ('/') { ⌂ }
+            @case ('/about') { ◐ }
+            @case ('/projects') { ▣ }
+            @case ('/skills') { ✶ }
+            @case ('/contact') { ✉ }
+            @default { • }
+          }
+        </span>
+        <span class="label">{{ item.name }}</span>
+      </a>
+    }
+  </div>
+</nav>
